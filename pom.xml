@@ -12,30 +12,21 @@
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
-            <version>4.5.3</version>
+            <version>4.8</version>
         </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.antlr</groupId>
-                <artifactId>antlr4-maven-plugin</artifactId>
-                <version>4.3</version>
-                <executions>
-                    <execution>
-                        <id>antlr</id>
-                        <goals>
-                            <goal>antlr4</goal>
-                        </goals>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- 假设我用的是JAVA 11-->
                 <configuration>
-                    <outputDirectory>src/test/java</outputDirectory>
-                    <listener>true</listener>
-                    <treatWarningsAsErrors>true</treatWarningsAsErrors>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
