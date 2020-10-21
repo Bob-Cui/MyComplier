@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.List;
+import java.util.Queue;
 
 public class HomeWork {
 
@@ -44,6 +45,7 @@ public class HomeWork {
             run(c);
             break;
         }
+//        Queue<String>
 
     }
 }
