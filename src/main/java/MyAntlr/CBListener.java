@@ -65,18 +65,6 @@ public interface CBListener extends ParseTreeListener {
 	 */
 	void exitParens(CBParser.ParensContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link CBParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterMulDiv(CBParser.MulDivContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link CBParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitMulDiv(CBParser.MulDivContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code AddSub}
 	 * labeled alternative in {@link CBParser#expr}.
 	 * @param ctx the parse tree

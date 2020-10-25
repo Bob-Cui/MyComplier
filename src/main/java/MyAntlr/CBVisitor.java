@@ -44,13 +44,6 @@ public interface CBVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParens(CBParser.ParensContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code MulDiv}
-	 * labeled alternative in {@link CBParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMulDiv(CBParser.MulDivContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code AddSub}
 	 * labeled alternative in {@link CBParser#expr}.
 	 * @param ctx the parse tree

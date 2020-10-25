@@ -51,13 +51,6 @@ public class CBBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements CBV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMulDiv(CBParser.MulDivContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitAddSub(CBParser.AddSubContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

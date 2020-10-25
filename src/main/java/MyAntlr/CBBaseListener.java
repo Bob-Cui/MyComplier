@@ -75,18 +75,6 @@ public class CBBaseListener implements CBListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMulDiv(CBParser.MulDivContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMulDiv(CBParser.MulDivContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterAddSub(CBParser.AddSubContext ctx) { }
 	/**
 	 * {@inheritDoc}
