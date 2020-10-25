@@ -24,8 +24,8 @@ NOTHING:' '+->skip;
 WS : [\t\n\r\f]+-> skip;
 
 COMMENT1:'/*'.*?'*/'->channel(2);
-COMMENT2:'//'.*? ->channel(2);
-PRE:'#'.*?->channel(3);
+COMMENT2:'//'.*?'\n' ->channel(2);
+PRE:'#'.*?'\n'->channel(3);
 
 
 
@@ -80,6 +80,7 @@ FALSE:'false';
 
 NEW:'new';
 RETURN:'return';
+MAIN:'main';
 
 INT:'int';
 FLOAT:'float';

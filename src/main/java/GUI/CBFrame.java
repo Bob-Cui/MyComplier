@@ -66,10 +66,15 @@ public class CBFrame extends JFrame {
                         java.util.List<CommonToken> c2 = (List<CommonToken>) lexer.getAllTokens();
                         for (CommonToken c1 : c2) {
                             String t = "";
-                            t += c1.getText() + " ";
-                            t += "第" + c1.getLine() + "行   ";
-                            t += "起始位置" + c1.getStartIndex();
-                            afterLexing.append(t + '\n');
+                            if (c1.getChannel() == PREPROCESS || c1.getChannel() == COMMENT) {
+                                t = c1.getText();
+                                preProcess.append(t + '\n');
+                            } else {
+                                t += c1.getText() + " ";
+                                t += "第" + c1.getLine() + "行   ";
+                                t += "起始位置" + c1.getStartIndex();
+                                afterLexing.append(t + '\n');
+                            }
                         }
 //                        afterLexing.append(str);
                     }

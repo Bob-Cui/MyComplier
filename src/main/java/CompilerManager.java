@@ -1,6 +1,6 @@
-package MyAntlr;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonToken;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ public class CompilerManager {
         String[] testStr = {
                 "a=3;",
                 "float b=44534e100;",
-                "       /*dasffasdf sdfads fdfasdf df asdf sdasf eafsd dsf sda*/",
-                "#dsafdsfsdafe fdsafsdf"
+                "       //dasffasdf sdfads fdfasdf df asdf sdasf eafsd dsf sda*/\n",
+                "#dsafdsfsdafe fdsafsdf\n"
 
         };
 
