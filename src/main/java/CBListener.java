@@ -17,6 +17,16 @@ public interface CBListener extends ParseTreeListener {
 	 */
 	void exitProg(CBParser.ProgContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CBParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void enterComment(CBParser.CommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CBParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void exitComment(CBParser.CommentContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code printExpr}
 	 * labeled alternative in {@link CBParser#stat}.
 	 * @param ctx the parse tree

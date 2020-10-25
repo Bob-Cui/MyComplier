@@ -16,6 +16,12 @@ public interface CBVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProg(CBParser.ProgContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CBParser#comment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComment(CBParser.CommentContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code printExpr}
 	 * labeled alternative in {@link CBParser#stat}.
 	 * @param ctx the parse tree
