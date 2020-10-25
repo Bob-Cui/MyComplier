@@ -33,7 +33,6 @@ public class CBFrame extends JFrame {
     /**
      * 使用空布局的方法进行布局
      *
-     * @throws HeadlessException
      */
     private void initButtons() {
         JButton chooseFile = new JButton("选择C语言文件");
@@ -137,15 +136,10 @@ public class CBFrame extends JFrame {
         myfileFilter = new FileFilter() {
             @Override
             public boolean accept(File f) {
-                if (f.getName().endsWith(".c")) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return f.getName().endsWith(".c");
 
             }
 
-            ;
 
             @Override
             public String getDescription() {
@@ -168,6 +162,17 @@ public class CBFrame extends JFrame {
         Width = dimension.width / 2;
         height = dimension.height / 2;
     }
+
+    private boolean dealStr(String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.contains("//") || str.contains("#")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * 初始化一个文件选择器，并返回文件内所有字符串集组成的集合
@@ -195,8 +200,11 @@ public class CBFrame extends JFrame {
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 String str;
                 while ((str = bufferedReader.readLine()) != null) {//用null来判断就不会出现忽略空格的情况
-//                    System.out.println(str);
-                    stringLinkedList.add(str);
+                    String t = "";
+                    if (dealStr(str)) {
+                        t = "\n";
+                    }
+                    stringLinkedList.add(str + t);
                 }
 
             } catch (IOException ioException) {
@@ -236,22 +244,19 @@ public class CBFrame extends JFrame {
                 while ((t = bufferedReader.readLine()) != null) {
                     System.out.println(t);
                 }
-            } catch (FileNotFoundException fileNotFoundException) {
+            } catch (IOException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
             }
         }
 
     }
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                CBFrame fileTest = new CBFrame();
-                fileTest.setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            CBFrame fileTest = new CBFrame();
+            fileTest.setVisible(true);
         });
+
+
     }
 }

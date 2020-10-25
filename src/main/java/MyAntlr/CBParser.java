@@ -17,8 +17,8 @@ public class CBParser extends Parser {
 		ADD=9, SUB=10, ASSIGN=11, LT=12, LE=13, GT=14, GE=15, Semicolon=16, Colon=17, 
 		Point=18, COMMA=19, LBrac=20, RBrac=21, LBBrac=22, RBBrac=23, LSB=24, 
 		RSB=25, STRUCT=26, IF=27, ELSE=28, FOR=29, WHILE=30, DO=31, SWITCH=32, 
-		CASE=33, TRUE=34, FALSE=35, NEW=36, RETURN=37, INT=38, FLOAT=39, DOUBLE=40, 
-		LONG=41, CHAR=42, ID=43, NUM=44, FLOAT_NUM=45;
+		CASE=33, TRUE=34, FALSE=35, NEW=36, RETURN=37, MAIN=38, INT=39, FLOAT=40, 
+		DOUBLE=41, LONG=42, CHAR=43, ID=44, NUM=45, FLOAT_NUM=46;
 	public static final int
 		RULE_prog = 0, RULE_stat = 1, RULE_expr = 2;
 	private static String[] makeRuleNames() {
@@ -34,7 +34,7 @@ public class CBParser extends Parser {
 			"'='", "'<'", "'<='", "'>'", "'>='", "';'", "':'", "'.'", "','", "'('", 
 			"')'", "'{'", "'}'", "'['", "']'", "'struct'", "'if'", "'else'", "'for'", 
 			"'while'", "'do'", "'switch'", "'case'", "'true'", "'false'", "'new'", 
-			"'return'", "'int'", "'float'", "'double'", "'long'", "'char'"
+			"'return'", "'main'", "'int'", "'float'", "'double'", "'long'", "'char'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -44,8 +44,8 @@ public class CBParser extends Parser {
 			"DIV", "ADD", "SUB", "ASSIGN", "LT", "LE", "GT", "GE", "Semicolon", "Colon", 
 			"Point", "COMMA", "LBrac", "RBrac", "LBBrac", "RBBrac", "LSB", "RSB", 
 			"STRUCT", "IF", "ELSE", "FOR", "WHILE", "DO", "SWITCH", "CASE", "TRUE", 
-			"FALSE", "NEW", "RETURN", "INT", "FLOAT", "DOUBLE", "LONG", "CHAR", "ID", 
-			"NUM", "FLOAT_NUM"
+			"FALSE", "NEW", "RETURN", "MAIN", "INT", "FLOAT", "DOUBLE", "LONG", "CHAR", 
+			"ID", "NUM", "FLOAT_NUM"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -535,17 +535,17 @@ public class CBParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3/-\4\2\t\2\4\3\t\3"+
-		"\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\5\3\27\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4 \n\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\7\4(\n\4\f\4\16\4+\13\4\3\4\2\3\6\5\2\4\6\2\3\3\2\13\r\2\60\2\t\3\2"+
-		"\2\2\4\26\3\2\2\2\6\37\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13\3\2\2\2\13"+
-		"\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6\4\2\16\17\7\3\2\2\17\27\3"+
-		"\2\2\2\20\21\7-\2\2\21\22\7\r\2\2\22\23\5\6\4\2\23\24\7\3\2\2\24\27\3"+
-		"\2\2\2\25\27\7\3\2\2\26\r\3\2\2\2\26\20\3\2\2\2\26\25\3\2\2\2\27\5\3\2"+
-		"\2\2\30\31\b\4\1\2\31\32\7\26\2\2\32\33\5\6\4\2\33\34\7\27\2\2\34 \3\2"+
-		"\2\2\35 \7.\2\2\36 \7-\2\2\37\30\3\2\2\2\37\35\3\2\2\2\37\36\3\2\2\2 "+
-		")\3\2\2\2!\"\f\7\2\2\"#\t\2\2\2#(\5\6\4\b$%\f\6\2\2%&\7\t\2\2&(\5\6\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\60-\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\5\3\27\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4 \n\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\7\4(\n\4\f\4\16\4+\13\4\3\4\2\3\6\5\2\4\6\2\3\3\2\13\r\2\60\2\t\3"+
+		"\2\2\2\4\26\3\2\2\2\6\37\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13\3\2\2\2"+
+		"\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6\4\2\16\17\7\3\2\2\17\27"+
+		"\3\2\2\2\20\21\7.\2\2\21\22\7\r\2\2\22\23\5\6\4\2\23\24\7\3\2\2\24\27"+
+		"\3\2\2\2\25\27\7\3\2\2\26\r\3\2\2\2\26\20\3\2\2\2\26\25\3\2\2\2\27\5\3"+
+		"\2\2\2\30\31\b\4\1\2\31\32\7\26\2\2\32\33\5\6\4\2\33\34\7\27\2\2\34 \3"+
+		"\2\2\2\35 \7/\2\2\36 \7.\2\2\37\30\3\2\2\2\37\35\3\2\2\2\37\36\3\2\2\2"+
+		" )\3\2\2\2!\"\f\7\2\2\"#\t\2\2\2#(\5\6\4\b$%\f\6\2\2%&\7\t\2\2&(\5\6\4"+
 		"\7\'!\3\2\2\2\'$\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\7\3\2\2\2+)\3"+
 		"\2\2\2\7\13\26\37\')";
 	public static final ATN _ATN =

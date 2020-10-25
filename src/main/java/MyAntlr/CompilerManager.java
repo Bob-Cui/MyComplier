@@ -1,7 +1,10 @@
 package MyAntlr;
 
-import org.antlr.v4.runtime.*;
+import FileOperation.MyFileManager;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonToken;
 
+import java.io.IOException;
 import java.util.List;
 
 public class CompilerManager {
@@ -31,17 +34,22 @@ public class CompilerManager {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String[] testStr = {
                 "a=3;",
                 "float b=44534e100;",
-                "       /*dasffasdf sdfads fdfasdf df asdf sdasf eafsd dsf sda*/",
-                "#dsafdsfsdafe fdsafsdf"
+                "       //dasffasdf sdfads fdfasdf df asdf sdasf eafsd dsf sda*/\n",
+                "##include<stdio.h>\r\n"
 
         };
+        MyFileManager myFileManager = new MyFileManager();
+        List<String> stringList = myFileManager.getFileLines("C:\\Users\\DELL\\Documents\\sdafasf.c");
 
-        for (String c : testStr) {
-            run(c);
-        }
+
+//        for (String c : stringList) {
+////for(char  t:)
+//
+////            run(c);
+//        }
     }
 }
