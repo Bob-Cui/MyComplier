@@ -20,12 +20,13 @@ import javax.swing.filechooser.FileFilter;
  */
 public class CBFrame extends JFrame {
 
-    //    private final Object ActionListener;
-//    MyButton open1 = null;
+
+    private final int PREPROCESS = 3; //预处理 channel
+    private final int COMMENT = 2;//注释 channel
     private int Width;
     private int height;
     private FileFilter myfileFilter;
-    private JTextArea sourceCFile, afterLexing;
+    private JTextArea sourceCFile, afterLexing, preProcess;
     private LinkedList<String> lines;
     private boolean choosed;
 
@@ -65,10 +66,10 @@ public class CBFrame extends JFrame {
                         java.util.List<CommonToken> c2 = (List<CommonToken>) lexer.getAllTokens();
                         for (CommonToken c1 : c2) {
                             String t = "";
-                            t += c1.getText()+" ";
+                            t += c1.getText() + " ";
                             t += "第" + c1.getLine() + "行   ";
                             t += "起始位置" + c1.getStartIndex();
-                            afterLexing.append(t+'\n');
+                            afterLexing.append(t + '\n');
                         }
 //                        afterLexing.append(str);
                     }
@@ -90,14 +91,29 @@ public class CBFrame extends JFrame {
 
 //        this.add(left);
         sourceCFile = new JTextArea(40, 10);
-        sourceCFile.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
+        sourceCFile.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
         sourceCFile.setLineWrap(true);
         sourceCFile.setBounds(Width / 6, height / 10, Width / 3, 3 * height / 4);
+
         afterLexing = new JTextArea(40, 10);
+        afterLexing.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
+        afterLexing.setBounds(Width / 2 + Width / 24, height / 10, Width / 3, 3 * height / 4);
 
-        afterLexing.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
-        afterLexing.setBounds(Width / 2 + Width / 12, height / 10, Width / 3, 3 * height / 4);
+        preProcess = new JTextArea(40, 10);
+        preProcess.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
+        preProcess.setBounds(Width, height / 10, Width / 4, 3 * height / 4);
 
+
+        JLabel preLabel = new JLabel("预处理结果");
+        preLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
+        preLabel.setBounds(Width + Width / 15, height / 30, Width / 6, height / 15);
+
+        JLabel lexLabel = new JLabel("词法分析结果");
+        lexLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
+        lexLabel.setBounds(Width / 2 + Width / 24 + Width / 15, height / 30, Width / 6, height / 15);
+        this.add(lexLabel);
+        this.add(preLabel);
+        this.add(preProcess);
         this.add(sourceCFile);
         this.add(afterLexing);
         this.setVisible(true);
@@ -142,7 +158,7 @@ public class CBFrame extends JFrame {
 
         Width = dimension.width;
         height = dimension.height;
-        setBounds(Width / 4, height / 4, Width / 2, height / 2);
+        setBounds(Width / 4 - Width / 12, height / 4, Width / 2 + Width / 6, height / 2);
 
         Width = dimension.width / 2;
         height = dimension.height / 2;
