@@ -30,9 +30,67 @@ public class CBFrame extends JFrame {
     private LinkedList<String> lines;
     private boolean choosed;
 
+    public CBFrame() throws HeadlessException {
+        init();
+        initBound();
+        initButtons();
+        JLabel left = new JLabel("源文件");
+        left.setBounds(Width / 3, height / 10, Width / 6, height / 12);
+
+
+//        this.add(left);
+        sourceCFile = new JTextArea(40, 10);
+        sourceCFile.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
+        sourceCFile.setLineWrap(true);
+        JScrollPane jScrollSource = new JScrollPane(sourceCFile);
+        jScrollSource.setBounds(Width / 6, height / 10, Width / 3, 3 * height / 4);
+        jScrollSource.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS | JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+
+        afterLexing = new JTextArea(40, 10);
+        afterLexing.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
+        JScrollPane jScrollLex = new JScrollPane(afterLexing);
+        jScrollLex.setBounds(Width / 2 + Width / 24, height / 10, Width / 3, 3 * height / 4);
+        jScrollLex.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS | JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+
+        preProcess = new JTextArea(40, 10);
+        preProcess.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
+        JScrollPane jScrollPre = new JScrollPane(preProcess);
+        jScrollPre.setBounds(Width, height / 10, Width / 4, 3 * height / 4);
+        jScrollPre.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS | JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+
+        JLabel preLabel = new JLabel("预处理结果");
+        preLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
+        preLabel.setBounds(Width + Width / 15, height / 30, Width / 6, height / 15);
+
+        JLabel lexLabel = new JLabel("词法分析结果");
+        lexLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
+        lexLabel.setBounds(Width / 2 + Width / 24 + Width / 15, height / 30, Width / 6, height / 15);
+
+        this.add(lexLabel);
+        this.add(preLabel);
+
+        this.add(jScrollLex);
+        this.add(jScrollSource);
+        this.add(jScrollPre);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            CBFrame fileTest = new CBFrame();
+            fileTest.setVisible(true);
+        });
+
+
+    }
+
     /**
      * 使用空布局的方法进行布局
-     *
      */
     private void initButtons() {
         JButton chooseFile = new JButton("选择C语言文件");
@@ -42,7 +100,9 @@ public class CBFrame extends JFrame {
         chooseFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                fileChooser();
+                preProcess.setText("");
+                afterLexing.setText("");
+
                 lines = getFileLines();
                 if (lines == null) {
                 } else {
@@ -59,8 +119,8 @@ public class CBFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (lines != null) {
-                    for (String str : lines) {
-                        ANTLRInputStream inputStream = new ANTLRInputStream(str);
+                    for (int i = 0; i < lines.size(); i++) {
+                        ANTLRInputStream inputStream = new ANTLRInputStream(lines.get(i));
                         CBLexer lexer = new CBLexer(inputStream);
                         java.util.List<CommonToken> c2 = (List<CommonToken>) lexer.getAllTokens();
                         for (CommonToken c1 : c2) {
@@ -69,10 +129,11 @@ public class CBFrame extends JFrame {
                                 t = c1.getText();
                                 preProcess.append(t + '\n');
                             } else {
-                                t += c1.getText() + " ";
-                                t += "第" + c1.getLine() + "行   ";
-                                t += "起始位置" + c1.getStartIndex();
-                                afterLexing.append(t + '\n');
+                                t += c1.getText() + "          ";
+                                t += "第" + (i + 1) + "行   ";
+                                t += "起始位置" + c1.getStartIndex() + "    ";
+                                t += "token类型: " + c1.getType();
+                                afterLexing.append("     " + t + '\n');
                             }
                         }
 //                        afterLexing.append(str);
@@ -83,46 +144,6 @@ public class CBFrame extends JFrame {
         });
         this.add(lexerButton);
         this.add(chooseFile);
-    }
-
-
-    public CBFrame() throws HeadlessException {
-        init();
-        initBound();
-        initButtons();
-        JLabel left = new JLabel("源文件");
-        left.setBounds(Width / 3, height / 10, Width / 6, height / 12);
-
-//        this.add(left);
-        sourceCFile = new JTextArea(40, 10);
-        sourceCFile.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
-        sourceCFile.setLineWrap(true);
-        sourceCFile.setBounds(Width / 6, height / 10, Width / 3, 3 * height / 4);
-
-        afterLexing = new JTextArea(40, 10);
-        afterLexing.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
-        afterLexing.setBounds(Width / 2 + Width / 24, height / 10, Width / 3, 3 * height / 4);
-
-        preProcess = new JTextArea(40, 10);
-        preProcess.setFont(new Font(null, Font.PLAIN | Font.BOLD, 15));
-        preProcess.setBounds(Width, height / 10, Width / 4, 3 * height / 4);
-
-
-        JLabel preLabel = new JLabel("预处理结果");
-        preLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
-        preLabel.setBounds(Width + Width / 15, height / 30, Width / 6, height / 15);
-
-        JLabel lexLabel = new JLabel("词法分析结果");
-        lexLabel.setFont(new Font(null, Font.PLAIN | Font.BOLD, 20));
-        lexLabel.setBounds(Width / 2 + Width / 24 + Width / 15, height / 30, Width / 6, height / 15);
-        this.add(lexLabel);
-        this.add(preLabel);
-        this.add(preProcess);
-        this.add(sourceCFile);
-        this.add(afterLexing);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     /**
@@ -172,7 +193,6 @@ public class CBFrame extends JFrame {
         }
         return false;
     }
-
 
     /**
      * 初始化一个文件选择器，并返回文件内所有字符串集组成的集合
@@ -248,15 +268,6 @@ public class CBFrame extends JFrame {
                 fileNotFoundException.printStackTrace();
             }
         }
-
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            CBFrame fileTest = new CBFrame();
-            fileTest.setVisible(true);
-        });
-
 
     }
 }
