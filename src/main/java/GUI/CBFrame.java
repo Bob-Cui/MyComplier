@@ -1,9 +1,8 @@
 package GUI;
 
-import MyAntlr.CBLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
-
+import MyAntlr.CBLexer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -84,6 +83,7 @@ public class CBFrame extends JFrame {
         EventQueue.invokeLater(() -> {
             CBFrame fileTest = new CBFrame();
             fileTest.setVisible(true);
+
         });
 
 

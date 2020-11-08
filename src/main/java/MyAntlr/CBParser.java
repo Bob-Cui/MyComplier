@@ -1,9 +1,17 @@
-package MyAntlr;// Generated from C:/Users/DELL/Desktop/WebForContest/Complier/src/MyANTLR\CB.g4 by ANTLR 4.8
-import org.antlr.v4.runtime.atn.*;
+// Generated from C:/Users/DELL/Desktop/WebForContest/Complier/src/MyANTLR\CB.g4 by ANTLR 4.8import org.antlr.v4.runtime.atn.*;
+
+package MyAntlr;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CBParser extends Parser {
@@ -18,7 +26,7 @@ public class CBParser extends Parser {
 		Point=18, COMMA=19, LBrac=20, RBrac=21, LBBrac=22, RBBrac=23, LSB=24, 
 		RSB=25, STRUCT=26, IF=27, ELSE=28, FOR=29, WHILE=30, DO=31, SWITCH=32, 
 		CASE=33, TRUE=34, FALSE=35, NEW=36, RETURN=37, MAIN=38, INT=39, FLOAT=40, 
-		DOUBLE=41, LONG=42, CHAR=43, ID=44, NUM=45, FLOAT_NUM=46;
+		DOUBLE=41, LONG=42, CHAR=43, ID=44, NUM=45, REAL_NUM=46;
 	public static final int
 		RULE_prog = 0, RULE_stat = 1, RULE_expr = 2;
 	private static String[] makeRuleNames() {
@@ -45,7 +53,7 @@ public class CBParser extends Parser {
 			"Point", "COMMA", "LBrac", "RBrac", "LBBrac", "RBBrac", "LSB", "RSB", 
 			"STRUCT", "IF", "ELSE", "FOR", "WHILE", "DO", "SWITCH", "CASE", "TRUE", 
 			"FALSE", "NEW", "RETURN", "MAIN", "INT", "FLOAT", "DOUBLE", "LONG", "CHAR", 
-			"ID", "NUM", "FLOAT_NUM"
+			"ID", "NUM", "REAL_NUM"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();

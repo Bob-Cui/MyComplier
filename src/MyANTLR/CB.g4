@@ -91,5 +91,5 @@ CHAR:'char';
 
 ID : [a-zA-Z]+;
 NUM : [0-9]+ ;
-FLOAT_NUM:[0-9]+.[0-9]+[e][-]?[1-9]+[0-9]*;
+REAL_NUM:NUM Point NUM;
 
