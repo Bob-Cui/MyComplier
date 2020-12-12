@@ -23,7 +23,6 @@ public class MyFileManager {
 
 
     private static void test() throws IOException {
-//        List<String> stringLinkedList = new List<String>() {
     }
 
     public void readLine(String address) throws IOException {

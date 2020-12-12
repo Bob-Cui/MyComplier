@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>Complier</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <dependencies>
 
         <dependency>
@@ -25,6 +26,25 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>src.main.java.GUI.CBFrame</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
             </plugin>
 
         </plugins>

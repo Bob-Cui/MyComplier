@@ -3,6 +3,7 @@ package GUI;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
 import MyAntlr.CBLexer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,6 +90,7 @@ public class CBFrame extends JFrame {
 
     }
 
+
     /**
      * 使用空布局的方法进行布局
      */
@@ -155,6 +157,7 @@ public class CBFrame extends JFrame {
         this.setLayout(null);
         this.setResizable(false);//窗口的大小不可更改
         myfileFilter = new FileFilter() {
+            //这一段代码是怎么写上去的
             @Override
             public boolean accept(File f) {
                 return f.getName().endsWith(".c");
