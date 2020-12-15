@@ -1,0 +1,46 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.7" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 0
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "showCode"
+					"maximumSize": new java.awt.Dimension( 230, 2147483647 )
+					"minimumSize": new java.awt.Dimension( 230, 19 )
+					"preferredSize": new java.awt.Dimension( 230, 19 )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 12, false )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+				"axis": 1
+			} ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane2"
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "error"
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "result"
+					"text": " "
+					"maximumSize": new java.awt.Dimension( 100, 50 )
+					"minimumSize": new java.awt.Dimension( 100, 50 )
+					"preferredSize": new java.awt.Dimension( 100, 50 )
+					"alignmentX": 0.5f
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 9, false )
+					"horizontalAlignment": 0
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

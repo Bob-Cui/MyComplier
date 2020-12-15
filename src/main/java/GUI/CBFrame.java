@@ -27,7 +27,7 @@ public class CBFrame extends JFrame {
     private int height;
     private FileFilter myfileFilter;
     private JTextArea sourceCFile, afterLexing, preProcess;
-    private LinkedList<String> lines;
+    private LinkedList<String> lines, linesForParser;
     private boolean choosed;
 
     public CBFrame() throws HeadlessException {
@@ -104,19 +104,22 @@ public class CBFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 preProcess.setText("");
                 afterLexing.setText("");
-
+                if (lines != null)
+                    lines.clear();
+                linesForParser.clear();
                 lines = getFileLines();
                 if (lines == null) {
                 } else {
                     for (String t : lines) {
                         sourceCFile.append(t + '\n');
+                        linesForParser.add(t + '\n');
                     }
                     choosed = true;
                 }
             }
         });
         JButton lexerButton = new JButton("词法分析");
-        lexerButton.setBounds(Width / 32, 3 * height / 5, Width / 8, height / 10);
+        lexerButton.setBounds(Width / 32, 2 * height / 5, Width / 8, height / 10);
         lexerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -140,21 +143,52 @@ public class CBFrame extends JFrame {
                         }
 
 
-
 //                        afterLexing.append(str);
                     }
                     choosed = false;
                 }
             }
         });
+
+
+        JButton parserButtom = new JButton("语法分析");
+        parserButtom.setBounds(Width / 32, 3 * height / 5, Width / 8, height / 10);
+
+        parserButtom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (linesForParser.size() != 0) {
+                    ParseFrame parseFrame = new ParseFrame(linesForParser);
+                    Toolkit kit = Toolkit.getDefaultToolkit();
+                    Dimension dimension = kit.getScreenSize();
+
+                    int Width = dimension.width;
+                    int height = dimension.height;
+                    parseFrame.setBounds(Width / 4 - Width / 12, height / 4, Width / 2 + Width / 6, height / 2);
+                    parseFrame.setVisible(true);
+
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "没有输入文件", "操作失误", JOptionPane.WARNING_MESSAGE);
+                }
+
+
+            }
+        });
+
+
         this.add(lexerButton);
         this.add(chooseFile);
+        this.add(parserButtom);
     }
 
     /**
      * 文件过滤器只有以.c结尾的文件才能够被接受
      */
     private void init() {
+
+        linesForParser = new LinkedList<>();
 //设置一个文件过滤器
         this.setTitle("简单C语言词法分析器");
         this.setLayout(null);

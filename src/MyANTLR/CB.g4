@@ -31,12 +31,13 @@ stat:NEWLINE
 
 
 
-ifexpr:IF '('expr')'block ';'
-      |IF '('expr')'block ELSE IF block
-      |IF '('expr')'block ELSE block;
+ifexpr:IF '('expr')'block
+      |IF '('expr')'block WS* (' ')* ELSE IF block
+      |IF '('expr')'block WS* (' ')* ELSE block;
 
 forexpr:FOR '('typename? (' ')* ID '=' expr   ';'  expr';' autocCacu ')' block
        |FOR '('    (' ')*    ')'block
+       |WHILE'(' (' ')*expr (' ')*')'block
 ;
 //自增与自减
 autocCacu:ID'++'
@@ -52,7 +53,7 @@ formals:(' ')*
        |formal
        |formal','formals;
 
-formal:typename ID;
+formal:typename(' ')+ ID;
 
 
 expr:
