@@ -1,4 +1,4 @@
-package MyAntlr;// Generated from C:/Users/DELL/Desktop/WebForContest/Complier/src/MyANTLR\CB.g4 by ANTLR 4.9
+// Generated from C:/Users/DELL/Desktop/WebForContest/Complier/src/MyANTLR\CB.g4 by ANTLR 4.9
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -129,7 +129,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitProg(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -175,7 +175,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -241,7 +241,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitStatlist(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitStatlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -269,7 +269,7 @@ public class CBParser extends Parser {
 			setState(57);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -345,7 +345,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitStat(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitStat(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -529,7 +529,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitIfexpr(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitIfexpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -650,7 +650,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitForexpr(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitForexpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -756,7 +756,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitAutocCacu(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitAutocCacu(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -827,7 +827,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitFuntions(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitFuntions(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -908,7 +908,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitFormals(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitFormals(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -975,7 +975,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitFormal(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitFormal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1042,7 +1042,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitExpr(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1077,7 +1077,7 @@ public class CBParser extends Parser {
 				setState(190);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
-				while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -1107,7 +1107,7 @@ public class CBParser extends Parser {
 			setState(209);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1202,7 +1202,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitListype(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitListype(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1251,7 +1251,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitNumlist(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitNumlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1297,7 +1297,7 @@ public class CBParser extends Parser {
 			setState(233);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1382,7 +1382,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitMulexpr(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitMulexpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1400,7 +1400,7 @@ public class CBParser extends Parser {
 			setState(241);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,20,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -1461,7 +1461,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitAtom(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1543,7 +1543,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitDeclare(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitDeclare(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1636,7 +1636,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitIdlist(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitIdlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1684,7 +1684,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitIdlist2(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitIdlist2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1776,7 +1776,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitTypename(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitTypename(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1865,7 +1865,7 @@ public class CBParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CBVisitor) return ((CBVisitor<? extends T>)visitor).visitJump_stat(this);
+			if ( visitor instanceof CBVisitor ) return ((CBVisitor<? extends T>)visitor).visitJump_stat(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1901,7 +1901,7 @@ public class CBParser extends Parser {
 				setState(309);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,29,_ctx);
-				while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{

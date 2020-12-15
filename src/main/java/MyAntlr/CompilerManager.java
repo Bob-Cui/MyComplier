@@ -1,13 +1,33 @@
 package MyAntlr;
 
 import FileOperation.MyFileManager;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonToken;
+import LearnAntlr.LearnBaseVisitor;
+import LearnAntlr.LearnVisitor;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.ParseTree;
 
+
+import javax.xml.transform.ErrorListener;
 import java.io.IOException;
 import java.util.List;
 
 public class CompilerManager {
+
+
+
+    private String name;
+
+    public CompilerManager(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public static void run(String str) {
         ANTLRInputStream inputStream = new ANTLRInputStream(str);
@@ -30,6 +50,23 @@ public class CompilerManager {
             }
 
         }
+    }
+
+    public static void runParser(String str) {
+        CharStream charStream= CharStreams.fromString(str);
+        CBLexer cbLexer=new CBLexer(charStream);
+        CommonTokenStream tokenStream = new CommonTokenStream(cbLexer);
+        CBParser cbParser = new CBParser(tokenStream);
+
+        cbParser.removeErrorListeners();
+        cbParser.addErrorListener(new MyErrorListener());
+        ParseTree tree = cbParser.prog();
+        LearnVisitor learnVisitor = new LearnBaseVisitor();
+        learnVisitor.visit(tree);
+
+
+
+
 
 
     }
@@ -43,13 +80,14 @@ public class CompilerManager {
 
         };
         MyFileManager myFileManager = new MyFileManager();
-        List<String> stringList = myFileManager.getFileLines("C:\\Users\\DELL\\Documents\\sdafasf.c");
+        List<String> stringList = myFileManager.getFileLines("C:\\Users\\DELL\\Documents\\Untitled2.cpp");
 
+        String ans = "";
+        for (String c : stringList) {
+            ans += c;
+//            runParser(c);
+        }
+        runParser(ans);
 
-//        for (String c : stringList) {
-////for(char  t:)
-//
-////            run(c);
-//        }
     }
 }

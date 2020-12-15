@@ -6,29 +6,37 @@ grammar CB;      // 定义一个名为Hello的语法，名字与文件名一致
 prog : statlist;
 
 
-block:
-     |'{'  NEWLINE  '}'
+block:'{'  '}'
      |'{' statlist '}';
 
 
 statlist:stat
-|stat';'statlist;
+| statlist stat;
 
-stat:  expr
-    | typename? ID '=' expr
-    |NUM '='expr
+
+
+
+
+stat:NEWLINE
+    | expr';'
+    |typename? (' ')* ID '=' expr ';'
+    |NUM '='expr ';'
+    |typename? ID numlist ';'
     |forexpr
-    |ifexpr;
+    |funtions
+    |jump_stat';'
+    |declare';'
+    |ifexpr ;
 
 
 
 
 ifexpr:IF '('expr')'block ';'
-      |IF '('expr')'block ELSE IF block ';'
-      |IF '('expr')'block ELSE block';';
+      |IF '('expr')'block ELSE IF block
+      |IF '('expr')'block ELSE block;
 
-forexpr:FOR '(' stat ';'  expr';' autocCacu ')' block
-       |FOR '('        ')'block
+forexpr:FOR '('typename? (' ')* ID '=' expr   ';'  expr';' autocCacu ')' block
+       |FOR '('    (' ')*    ')'block
 ;
 //自增与自减
 autocCacu:ID'++'
@@ -36,11 +44,12 @@ autocCacu:ID'++'
 
 
 
-funtions:typename ID'('formals')'block
+funtions:typename (' ')*  (ID|'main') '('formals ')'block
 
 ;
 //参数表
-formals:formal
+formals:(' ')*
+       |formal
        |formal','formals;
 
 formal:typename ID;
@@ -54,39 +63,55 @@ expr:
 |expr LT expr
 ;
 
+listype:ID numlist;
+
+
+numlist:'['']'
+|'['NUM']'
+|numlist (('[' ']')|('['NUM']'))
+;
+
+
+
+
 
 mulexpr: atom(('*'|'/') atom) *;
 
 
 
 atom:'('expr')'
+|listype
 |NUM
 |ID;
 
-
-
 //声明语句
-declare:typename idlist;
+declare:typename(' ')* ID numlist
+|typename(' ')*idlist;
 
 
-idlist:ID
-      |idlist ',' ID;
+idlist: ID idlist2;
 
-typename:VOID
+idlist2:
+|','(' ')*ID (' ')*idlist2;
+
+
+
+typename:
+        |VOID
         |FLOAT
-        | INT
+        |INT
         |DOUBLE
         |LONG;
 
 //有关跳转的语句
-jump_stat	:
-			| 'continue' ';'
-			| 'break' ';'
-			| 'return' expr ';'
-			| 'return'	';';
+jump_stat	: 'continue'
+			| 'break'
+			| 'return'(' ')* expr
+			| 'return'
+			| 'return'(' ')* NUM ;
 
 NEWLINE:'\r'?'\n'->skip;
-NOTHING:' '+->skip;
+NOTHING:(' ')->skip;
 WS : [\t\n\r\f]+-> skip;
 
 COMMENT1:'/*'.*?'*/'->channel(2);

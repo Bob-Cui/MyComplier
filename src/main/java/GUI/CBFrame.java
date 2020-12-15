@@ -1,8 +1,8 @@
 package GUI;
 
+import MyAntlr.CBLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
-import MyAntlr.CBLexer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -138,6 +138,9 @@ public class CBFrame extends JFrame {
                                 afterLexing.append("     " + t + '\n');
                             }
                         }
+
+
+
 //                        afterLexing.append(str);
                     }
                     choosed = false;
