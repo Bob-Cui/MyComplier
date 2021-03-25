@@ -6,7 +6,7 @@ grammar CB;      // 定义一个名为Hello的语法，名字与文件名一致
 prog : statlist;
 
 
-block:'{'  '}'
+block:'{'(' ')*'}'
      |'{' statlist '}';
 
 
@@ -17,8 +17,7 @@ statlist:stat
 
 
 
-stat:NEWLINE
-    | expr';'
+stat: expr';'
     |typename? (' ')* ID '=' expr ';'
     |NUM '='expr ';'
     |typename? ID numlist ';'

@@ -9,12 +9,14 @@ new FormModel {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
+				"verticalScrollBarPolicy": 22
+				"horizontalScrollBarPolicy": 32
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "showCode"
 					"maximumSize": new java.awt.Dimension( 230, 2147483647 )
 					"minimumSize": new java.awt.Dimension( 230, 19 )
 					"preferredSize": new java.awt.Dimension( 230, 19 )
-					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 12, false )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
